@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+# Tim's space photo project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## This a project, built in React with CSS styling, which pulls in NASA's astronomy photo of the day for today (or any other day you choose)
 
-## Available Scripts
+[You can see it live, here](https://www.timaldred.com/space)
 
-In the project directory, you can run:
+Here's some cool things it uses:
 
-### `npm start`
+## 🪐 API Calls
+I've built projects which pull in information from public APIs before, but this was my first use of an API key, and with limited API use.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+*Note:* if you're working with an API with a limited number of calls, and you accidentally build in an infinite loop, you won't be able to work on your project for the rest of the day.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🪐 Playing with dates
+NASA's photos of the day are organised by date.  
 
-### `npm test`
+Although there's a 'today' function in React, I pulled in the latest photo from the NASA API and used the date from that as 'today'. I did this to avoid any potential time zone / photo hasn't been uploaded yet issues.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Then I used React to determine yesterday, last year etc. 
 
-### `npm run build`
+## 🪐 Date picker
+During CODELancashire, somebody on a ~rival~ fellow team (I wish I could remember who so that I could credit them properly) used a date picker. I was very envious and started looking for an excuse to use one myself.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+In this project, there's a date picker, allowing you to view any of NASA's previous photos of the day. I added in a start date (when the first photo was uploaded) and end date (the last photo, so far...). 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+*Additional problem:* When testing this app on my iPhone, I found the browser zoomed in when the date picker was selected and it messed up the viewing experience. Through CSS, I made the date picker larger, so that no zoom was required, and also changed the colour so that it better suited my theme.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🪐 Random date!
+Because what's the fun of building something if you don't make it as complicated as can be?
 
-### `npm run eject`
+As well as being able to pick a specific date, you can also choose a random photo from the archives. Which isn't just a random number, but **a random date**, just to add to the complexity.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🪐 Other things
+Some things that aren't new to me but are included in this project:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Google fonts:** For a retro-futuristic heading typeface
+- **Show/hide:** Everything looked a bit cluttered when the photo description loaded as default, but I didn't want to leave it out altogether. So I hid it in a 'see more' box.
+- **Scroll to the top:** Because selecting a new date doesn't load a new page, but instead updates the page you're seeing, this meant the user had to manually scroll back to the photo to see it. So I automated this part.
